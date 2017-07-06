@@ -1,0 +1,27 @@
+<!--post.wxml-->
+<view class="container_post">
+  <view class="section">
+    <view class="weui-cells__title">目的地:</view>
+    <input  bindinput="bindKeyWhereInput" placeholder="如波士顿" focus="{{focus}}"/>
+  </view>
+  <view class="section">
+    <view class="weui-cells__title">出发日期:</view>
+    <input  bindinput="bindKeyDateInput" placeholder="月/日" focus="{{focus}}"/>
+  </view>
+  <view class="section">
+    <view class="weui-cells__title">出发时间:</view>
+    <input  bindinput="bindKeyTimeInput" placeholder="时：分" focus="{{focus}}"/>
+  </view>
+  <view class="section">
+    <view class="weui-cells__title">车型：</view>
+    <input bindinput="bindKeyModelInput" placeholder="如：sonata" focus="{{focus}}"/>
+  </view>
+  <view class="section">
+    <view class="weui-cells__title">载客数:</view>
+    <input type="number" maxlength="1" bindinput="bindKeyNumberInput" placeholder="如：3" focus="{{focus}}"/>
+  </view>
+  <view class="btn-area">
+    <button bindtap="bindButtonTap">提交</button>
+  </view>
+
+</view>
