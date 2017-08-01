@@ -1,0 +1,6 @@
+<!--selection.wxml-->
+
+<button bindtap="bindRideButtonTap">招客</button>
+
+<button bindtap="bindQuestButtonTap">悬赏</button>
+
