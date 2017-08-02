@@ -7,6 +7,7 @@ Page({
     nowDate: '',
     endDate: '',
     placeArray:['Amherst','NYC','Boston','BDL Airport','Logan Airport'],
+
     numArray:[0,1,2,3,4,5,6],
     objectArray:[
       {
@@ -32,7 +33,7 @@ Page({
     ],
     userInfo:{},
     departure: 0,
-    destination:0,
+    destination:1,
     eDate:'',
     eTime:'',
     lDate:'',
@@ -60,17 +61,17 @@ Page({
       })
     })
 
-    wx.connectSocket({
-      url: 'http://75.69.46.99/'
-    })
+    // wx.connectSocket({
+    //   url: 'http://kunwang.us'
+    // })
 
-    wx.onSocketOpen(function (res) {
-      console.log('WebSocket连接已打开！')
-    })
+    // wx.onSocketOpen(function (res) {
+    //   console.log('WebSocket连接已打开！')
+    // })
 
-    wx.onSocketError(function (res) {
-      console.log('WebSocket连接打开失败，请检查！')
-    })
+    // wx.onSocketError(function (res) {
+    //   console.log('WebSocket连接打开失败，请检查！')
+    // })
 
 
 

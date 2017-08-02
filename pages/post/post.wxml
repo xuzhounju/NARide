@@ -59,6 +59,11 @@
       </view>
     </picker>
   </view>
+
+  <view class="section">
+    <view class="section__title">司机</view>
+    <switch name="driver"/>
+  </view>
   <view class="btn-area">
     <button formType="submit">Submit</button>
     <button formType="reset">Reset</button>
