@@ -4,6 +4,7 @@
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
+<<<<<<< HEAD
   <view class="actionAmount">
     <text class="details">接客次数：{{log.userInfo.pickAmount}}
     </text>
@@ -21,5 +22,10 @@
     <text class="details"> 出发地：{{log.departure}}目的地：{{log.toWhere}}；</text>
     <text class="details"> 出发日期：{{log.departureDate}}； 出发时间：{{log.departureTime}}</text>
     <text class="details"> 车型：{{log.carModel}}； 司机信息：{{log.dName}}</text>
+=======
+
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+>>>>>>> 5970a24f11a3d02853c31c525d3f19ff6bd876f8
   </view>
 </view>
