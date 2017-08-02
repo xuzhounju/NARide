@@ -60,6 +60,21 @@ Page({
       })
     })
 
+    wx.connectSocket({
+      url: 'http://75.69.46.99/'
+    })
+
+    wx.onSocketOpen(function (res) {
+      console.log('WebSocket连接已打开！')
+    })
+
+    wx.onSocketError(function (res) {
+      console.log('WebSocket连接打开失败，请检查！')
+    })
+
+
+
+
   },
 
 
@@ -112,48 +127,26 @@ Page({
     })
   },
 
-
-
-  bindButtonTap: function () {
-    var output;
-    output= this.data
-    console.log(output)
-    wx.setStorage({
-      key: String(this.data.carModel)+String(this.data.departureDate),
-
-      data: output,
-    })
-    
-   
+  formSubmit: function (e) {
+    console.log('form发生了submit事件，携带数据为：', e.detail.value)
   },
-  bindKeyWhereInput: function (e) {
+  formReset: function () {
     this.setData({
-      toWhere: e.detail.value,
+      departure: 0,
+      destination: 0,
+      eDate: '',
+      eTime: '',
+      lDate: '',
+      lTime: '',
+      pNumber: 1,
+      memo: ''
     })
-  },
+    console.log('form发生了reset事件')
+  }
 
-  bindKeyDateInput: function (e) {
-    this.setData({
-      departureDate: e.detail.value,
-    })
-  },
 
-  bindKeyTimeInput: function (e) {
-    this.setData({
-      departureTime: e.detail.value,
-    })
-  },
-  bindKeyModelInput: function (e) {
-    this.setData({
-      carModel: e.detail.value,
-    })
-  },
 
-  bindKeyNumberInput: function (e) {
-    this.setData({
-      pNumber: e.detail.value,
-    })
-  },
+  
 
 
 
