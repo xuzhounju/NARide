@@ -8,11 +8,12 @@
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
-  margin: 20rpx;
+  margin: 30 rpx;
   border-radius: 50%;
 }
 
 .userinfo-nickname {
+  margin: 20 rpx;
   color: #aaa;
 }
 
