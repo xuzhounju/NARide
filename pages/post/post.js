@@ -6,7 +6,7 @@ Page({
   data: {
     nowDate: '',
     endDate: '',
-    placeArray:['Amherst','NYC','Boston','BDL Airport','Logan Airport'],
+    placeArray: ['Amherst', 'BDL Airport','Boston','Logan Airport','NYC'],
 
     numArray:[0,1,2,3,4,5,6],
     objectArray:[
@@ -61,17 +61,17 @@ Page({
       })
     })
 
-    // wx.connectSocket({
-    //   url: 'http://kunwang.us'
-    // })
+    wx.connectSocket({
+      url: 'wss://kunwang.us'
+    })
 
-    // wx.onSocketOpen(function (res) {
-    //   console.log('WebSocket连接已打开！')
-    // })
+    wx.onSocketOpen(function (res) {
+      console.log('WebSocket连接已打开！')
+    })
 
-    // wx.onSocketError(function (res) {
-    //   console.log('WebSocket连接打开失败，请检查！')
-    // })
+    wx.onSocketError(function (res) {
+      console.log('WebSocket连接打开失败，请检查！')
+    })
 
 
 
@@ -143,6 +143,10 @@ Page({
       memo: ''
     })
     console.log('form发生了reset事件')
+  },
+
+  onShareAppMessage: function () {
+
   }
 
 
