@@ -60,6 +60,7 @@ Page({
         userInfo: userInfo
       })
     })
+   
 
     // wx.connectSocket({
     //   url: 'wss://kunwang.us'
@@ -129,8 +130,32 @@ Page({
   },
 
   formSubmit: function (e) {
-    console.log(e.detail.value.eDate)
-    if (e.detail.value.eDate < e.detail.value.lDate){
+    console.log(e)
+
+    if (e.detail.value.eDate <= e.detail.value.lDate){
+      wx.request({
+        url: 'https://kunwang.us/new/', //仅为示例，并非真实的接口地址
+        data: {
+          departure: e.detail.value.departure,
+          destination: e.detail.value.destination,
+          eDate: e.detail.value.eDate,
+          eTime: e.detail.value.eTime,
+          lDate: e.detail.value.lDate,
+          lTime: e.detail.value.lTime,
+          pNumber: e.detail.value.pNumber,
+          driver: e.detail.value.driver,
+          memo: e.detail.value.memo
+        },
+
+        method:"POST",
+        
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res) {
+          console.log(res.data)
+        }
+      })
       console.log('form发生了submit事件，携带数据为：', e.detail.value)
     } else{
       console.log('最晚日期早于最早日期 ')
