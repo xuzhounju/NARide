@@ -12,7 +12,7 @@ Page({
    
     userInfo:{},
     departure: 0,
-    destination:1,
+    arrival:1,
     eDate:'',
     eTime:'',
     lDate:'',
@@ -75,10 +75,10 @@ Page({
     })
   },
 
-  bindDestinationPickerChange: function (e) {
+  bindarrivalPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      destination: e.detail.value
+      arrival: e.detail.value
     })
   },
 
@@ -110,28 +110,28 @@ Page({
 
   formSubmit: function (e) {
     console.log(e)
-
-    /*if (e.detail.value.eDate <= e.detail.value.lDate){
+    if (e.detail.value.eDate <= e.detail.value.lDate){
       var earlist = new Date(e.detail.value.eDate + ' ' + e.detail.value.eTime)
       console.log('E:',earlist)
       earlist=earlist.getTime()/1000.0
       var latest = new Date(e.detail.value.lDate + ' ' + e.detail.value.lTime)
       latest = latest.getTime()/1000.0
-      var uri = encodeURI(`departure=${parseInt(e.detail.value.departure)+1}&arrival=${parseInt(e.detail.value.destination)+1}&earliest=${earlist}&latest=${latest}&pNumber=${e.detail.value.pNumber}&memo=${e.detail.value.memo}`)
-      if (e.detail.value.driver){
-        uri = uri + '&driver=on'
-      }
+      var mydata = e.detail.value;
+      mydata.earliest = earlist;
+      mydata.latest = latest;
+      mydata.departure = parseInt(mydata.departure)+1;
+      mydata.arrival = parseInt(mydata.arrival)+1;
       wx.request({
         url: 'https://kunwang.us/new/', //仅为示例，并非真实的接口地址
         
         
-        data: uri,
+        data: mydata,
         
 
         method:"POST",
         
         header: {
-          'content-type': 'application/json'
+          'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
           console.log(res.data)
@@ -140,42 +140,12 @@ Page({
       console.log('form发生了submit事件，携带数据为：', e.detail.value)
     } else{
       console.log('最晚日期早于最早日期 ')
-    }*/
-
-    if (e.detail.value.eDate <= e.detail.value.lDate) {
-      var earlist = new Date(e.detail.value.eDate + ' ' + e.detail.value.eTime)
-      console.log('E:', earlist)
-      earlist = earlist.getTime() / 1000.0
-      var latest = new Date(e.detail.value.lDate + ' ' + e.detail.value.lTime)
-      latest = latest.getTime() / 1000.0
-      var form = new FormData(document.getElementById("js-postform"));
-      form.set("earliest", earlist);
-      form.set("latest", latest);
-      wx.request({
-        url: 'https://kunwang.us/new/', //仅为示例，并非真实的接口地址
-
-
-        data: form,
-
-
-        method: "POST",
-
-        header: {
-          'content-type': 'application/json'
-        },
-        success: function (res) {
-          console.log(res.data)
-        }
-      })
-      console.log('form发生了submit事件，携带数据为：', e.detail.value)
-    } else {
-      console.log('最晚日期早于最早日期 ')
     }
   },
   formReset: function () {
     this.setData({
       departure: 0,
-      destination: 1,
+      arrival: 1,
       eDate: '',
       eTime: '',
       lDate: '',

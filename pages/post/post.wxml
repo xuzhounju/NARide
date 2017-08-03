@@ -9,9 +9,9 @@
   </view>
 
   <view class="section">
-    <picker name="destination" bindchange="bindDestinationPickerChange" value="{{destination}}" range="{{placeArray}}">
+    <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{arrival}}" range="{{placeArray}}">
       <view class="picker">
-        目的地：{{placeArray[destination]}}
+        目的地：{{placeArray[arrival]}}
       </view>
     </picker>
   </view>
