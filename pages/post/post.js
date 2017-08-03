@@ -9,28 +9,7 @@ Page({
     placeArray: ['Amherst', 'BDL Airport','Boston','Logan Airport','NYC'],
 
     numArray:[0,1,2,3,4,5,6],
-    objectArray:[
-      {
-        id: 0,
-        name: 'Amherst'
-      },
-      {
-        id: 1,
-        name: 'NYC'
-      },
-      {
-        id: 2,
-        name: 'Boston'
-      },
-      {
-        id: 3,
-        name: 'BDL Airport'
-      },
-      {
-        id: 4,
-        name: 'Logan Airport'
-      }
-    ],
+   
     userInfo:{},
     departure: 0,
     destination:1,
@@ -132,20 +111,22 @@ Page({
   formSubmit: function (e) {
     console.log(e)
 
-    if (e.detail.value.eDate <= e.detail.value.lDate){
+    /*if (e.detail.value.eDate <= e.detail.value.lDate){
+      var earlist = new Date(e.detail.value.eDate + ' ' + e.detail.value.eTime)
+      console.log('E:',earlist)
+      earlist=earlist.getTime()/1000.0
+      var latest = new Date(e.detail.value.lDate + ' ' + e.detail.value.lTime)
+      latest = latest.getTime()/1000.0
+      var uri = encodeURI(`departure=${parseInt(e.detail.value.departure)+1}&arrival=${parseInt(e.detail.value.destination)+1}&earliest=${earlist}&latest=${latest}&pNumber=${e.detail.value.pNumber}&memo=${e.detail.value.memo}`)
+      if (e.detail.value.driver){
+        uri = uri + '&driver=on'
+      }
       wx.request({
         url: 'https://kunwang.us/new/', //仅为示例，并非真实的接口地址
-        data: {
-          departure: e.detail.value.departure,
-          destination: e.detail.value.destination,
-          eDate: e.detail.value.eDate,
-          eTime: e.detail.value.eTime,
-          lDate: e.detail.value.lDate,
-          lTime: e.detail.value.lTime,
-          pNumber: e.detail.value.pNumber,
-          driver: e.detail.value.driver,
-          memo: e.detail.value.memo
-        },
+        
+        
+        data: uri,
+        
 
         method:"POST",
         
@@ -158,6 +139,36 @@ Page({
       })
       console.log('form发生了submit事件，携带数据为：', e.detail.value)
     } else{
+      console.log('最晚日期早于最早日期 ')
+    }*/
+
+    if (e.detail.value.eDate <= e.detail.value.lDate) {
+      var earlist = new Date(e.detail.value.eDate + ' ' + e.detail.value.eTime)
+      console.log('E:', earlist)
+      earlist = earlist.getTime() / 1000.0
+      var latest = new Date(e.detail.value.lDate + ' ' + e.detail.value.lTime)
+      latest = latest.getTime() / 1000.0
+      var form = new FormData(document.getElementById("js-postform"));
+      form.set("earliest", earlist);
+      form.set("latest", latest);
+      wx.request({
+        url: 'https://kunwang.us/new/', //仅为示例，并非真实的接口地址
+
+
+        data: form,
+
+
+        method: "POST",
+
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res) {
+          console.log(res.data)
+        }
+      })
+      console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    } else {
       console.log('最晚日期早于最早日期 ')
     }
   },

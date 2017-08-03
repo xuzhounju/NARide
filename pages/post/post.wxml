@@ -1,5 +1,5 @@
 <!--post.wxml-->
-<form bindsubmit="formSubmit" bindreset="formReset">
+<form bindsubmit="formSubmit" bindreset="formReset" id="js-postform">
   <view class="section">
     <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{departure}}" range="{{placeArray}}">
       <view class="picker">
