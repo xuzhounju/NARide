@@ -61,17 +61,17 @@ Page({
       })
     })
 
-    wx.connectSocket({
-      url: 'wss://kunwang.us'
-    })
+    // wx.connectSocket({
+    //   url: 'wss://kunwang.us'
+    // })
 
-    wx.onSocketOpen(function (res) {
-      console.log('WebSocket连接已打开！')
-    })
+    // wx.onSocketOpen(function (res) {
+    //   console.log('WebSocket连接已打开！')
+    // })
 
-    wx.onSocketError(function (res) {
-      console.log('WebSocket连接打开失败，请检查！')
-    })
+    // wx.onSocketError(function (res) {
+    //   console.log('WebSocket连接打开失败，请检查！')
+    // })
 
 
 
@@ -129,12 +129,17 @@ Page({
   },
 
   formSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    console.log(e.detail.value.eDate)
+    if (e.detail.value.eDate < e.detail.value.lDate){
+      console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    } else{
+      console.log('最晚日期早于最早日期 ')
+    }
   },
   formReset: function () {
     this.setData({
       departure: 0,
-      destination: 0,
+      destination: 1,
       eDate: '',
       eTime: '',
       lDate: '',
