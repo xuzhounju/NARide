@@ -28,7 +28,12 @@ App({
     }
   },
 
+  setOpenID: function(cb){
+    this.globalData.openid = cb
+  },
+
   globalData: {
-    userInfo: null
+    userInfo: null,
+    openid:null
   }
 })
