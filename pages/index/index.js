@@ -21,5 +21,32 @@ Page({
         userInfo:userInfo
       })
     })
+
+    // wx.login({
+    //   success: function (res) {
+    //     var js_code = res.code;//调用登录接口获得的用户的登录凭证code
+    //     wx.request({
+    //       url: 'https://kunwang.us/login/',
+    //       data: {
+    //         login_info: js_code
+    //       },
+    //       method: 'POST',
+    //       success: function (res) {
+    //         if (res == false){
+    //           wx.navigateTo({
+    //             url: '../first/first',
+    //           })
+    //         }
+    //       }
+    //     })
+    //   }
+    // })
+
+  },
+
+  bindMessageButtonTap: function(e){
+    wx.navigateTo({
+      url: '../first/first',
+    })
   }
 })

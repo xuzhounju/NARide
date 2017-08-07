@@ -23,4 +23,9 @@
     <text class="details"> 出发日期：{{log.departureDate}}； 出发时间：{{log.departureTime}}</text>
     <text class="details"> 车型：{{log.carModel}}； 司机信息：{{log.dName}}</text>
   </view>
+
+  <button bindtap="bindMessageButtonTap">修改联系信息</button>
+
+
+
 </view>
