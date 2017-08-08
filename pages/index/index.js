@@ -9,7 +9,7 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../first/first'
     })
   },
   onLoad: function () {
@@ -21,6 +21,7 @@ Page({
     wx.login({
       success: function (res) {
         var js_code = res.code;//调用登录接口获得的用户的登录凭证code
+        console.log(js_code)
         wx.request({
           url: 'https://kunwang.us/login/',
           data: {
