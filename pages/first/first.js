@@ -1,7 +1,29 @@
 // first.js
+var app =getApp()
 Page({
 
   data: {
+    weixin:'',
+    phone:'',
+    email:''
+  },
+  onLoad: function () {
+    var that =this
+    wx.request({
+      url: 'https://kunwang.us/contacts',
+      method:"GET",
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          weixin: res.data.weixin,
+          phone: res.data.phone,
+          email:res.data.email
+        })
+      }
+    })
   },
 
   formSubmit: function (e) {
