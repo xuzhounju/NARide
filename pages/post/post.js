@@ -122,8 +122,9 @@ Page({
       mydata.departure = parseInt(mydata.departure)+1;
       mydata.arrival = parseInt(mydata.arrival)+1;
       wx.request({
-        url: 'https://kunwang.us/new/' + app.globalData.openid+ '/', //仅为示例，并非真实的接口地址
-    
+        url: 'https://kunwang.us/new/', //仅为示例，并非真实的接口地址
+        
+        
         data: mydata,
         
 
