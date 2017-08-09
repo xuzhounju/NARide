@@ -7,11 +7,7 @@ Page({
     openid: ''
   },
   //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../first/first'
-    })
-  },
+  
   onLoad: function () {
     console.log('onLoad')
     var that = this
@@ -23,17 +19,16 @@ Page({
         var js_code = res.code;//调用登录接口获得的用户的登录凭证code
         console.log(js_code)
         wx.request({
-          url: 'https://kunwang.us/login/',
-          data: {
-            login_info: js_code
-          },
-          method: 'POST',
+          url: 'https://kunwang.us/user/'+js_code,
+          method: 'GET',
           success: function (res) {
-            if (res.data.first){
+            console.log('res.data[0].fields=', res.data)
+            app.globalData.openid = res.data[0].fields.username
+            if (res.data[0].fields.gender == -1){
               wx.navigateTo({
                 url: '../first/first',
               })
-            app.globalData.openid = res.data.openid
+             
             
             }
           }
